@@ -1,0 +1,30 @@
+;$GALMODE REGISTERED
+
+chip U10 GAL16V8
+
+CLK=1 i2=2 i3=3 i4=4 i5=5 i6=6 i7=7 i8=8 i9=9 GND=10 /OE=11 f12=12 
+f13=13 o14=14 f15=15 o16=16 f17=17 ro18=18 rf19=19 VCC=20 
+
+@ues 0000000000000000
+@ptd unused
+
+equations
+
+/rf19 := /i2 * /rf19
+    + /i2 * i4
+rf19.oe = OE
+/ro18 := /i3 * i4 * i5
+ro18.oe = OE
+f17 = gnd
+f17.oe = gnd
+/o16 = f17 * i6 * f15 * /i7 * /i8 * /f13 * /i9 * /f12
+o16.oe = vcc
+f15 = gnd
+f15.oe = gnd
+/o14 = i8 * /f13 * /i9 * /f12
+    + i7 * i8 * /f12
+o14.oe = vcc
+f13 = gnd
+f13.oe = gnd
+f12 = gnd
+f12.oe = gnd

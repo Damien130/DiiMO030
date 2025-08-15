@@ -1,0 +1,47 @@
+;$GALMODE MEDIUM
+
+chip U8 GAL16V8
+
+i1=1 i4=4 i5=5 i6=6 i7=7 i8=8 i9=9 GND=10 /i11=11 o12=12 o13=13 
+f14=14 f15=15 f16=16 f17=17 f18=18 o19=19 VCC=20 
+
+@ues ffffffffffffffff
+
+equations
+
+o19 = /i1 * i4 * f17 * i8 * i9
+    + /i1 * i4 * f15 * i8 * /i9
+    + /i1 * i4 * f16 * /i8 * i9
+    + /i1 * i4 * f14 * /i8 * /i9
+o19.oe = vcc
+f18 = gnd
+f18.oe = gnd
+f17 = i8 * i9
+    + i11
+    + i4 * f17
+f17.oe = /i1 * i7
+f16 = /i8 * i9
+    + i11
+    + i4 * f16
+f16.oe = /i1 * i7
+f15 = i8 * /i9
+    + i11
+    + i4 * f15
+f15.oe = /i1 * i7
+f14 = /i8 * /i9
+    + i11
+    + i4 * f14
+f14.oe = /i1 * i7
+o13 = i4 * f17 * i8 * i9
+    + i4 * f15 * i8 * /i9
+    + i4 * f16 * /i8 * i9
+    + i4 * f14 * /i8 * /i9
+    + i1 * i6
+o13.oe = /i5
+o12 = f18 * i4 * f17 * i8 * i9
+    + f18 * i4 * f15 * i8 * /i9
+    + f18 * i4 * f16 * /i8 * i9
+    + f18 * i4 * f14 * /i8 * /i9
+    + i1 * f18 * i6
+    + f18 * i5
+o12.oe = vcc

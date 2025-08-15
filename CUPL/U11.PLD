@@ -1,0 +1,29 @@
+;$GALMODE MEDIUM
+
+chip U24 GAL16V8
+
+i1=1 i2=2 GND=10 /nc11=11 o12=12 f13=13 f14=14 f15=15 o16=16 
+o17=17 o18=18 o19=19 VCC=20 
+
+@ues 0000000000000000
+@ptd unused
+
+equations
+
+o19 = gnd
+o19.oe = gnd
+/o18 = /f13
+o18.oe = vcc
+/o17 = /i1
+o17.oe = vcc
+/o16 = /i1
+o16.oe = vcc
+/f15 = /i2 * /f15
+    + /i2 * /i1
+f15.oe = vcc
+/f14 = /f15
+f14.oe = vcc
+/f13 = /f14
+f13.oe = vcc
+o12 = gnd
+o12.oe = gnd

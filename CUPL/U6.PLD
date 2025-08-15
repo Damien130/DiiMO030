@@ -1,0 +1,41 @@
+;$GALMODE MEDIUM
+
+chip U6 GAL16V8
+
+i1=1 i2=2 i3=3 i4=4 i5=5 i6=6 i7=7 i8=8 i9=9 GND=10 /i11=11 o12=12 
+f13=13 f14=14 f15=15 f16=16 f17=17 o18=18 o19=19 VCC=20 
+
+@ues 0000000000000000
+@ptd unused
+
+equations
+
+o19 = i5 * i6 * i9
+    + /i5 * /i8 * /i9
+    + /i5 * /i6 * i8 * i9
+    + i5 * /i6 * i8 * /i9
+    + i5 * /i8 * i9
+    + /i5 * i6 * /i9
+o19.oe = vcc
+o18 = i6 * i8
+    + /i6 * /i8
+o18.oe = vcc
+/f17 = /i2 * /f13
+    + /f17 * /f14 * f13
+    + /i2 * /f14
+f17.oe = vcc
+f16 = gnd
+f16.oe = gnd
+f15 = i4 * f16 * f15
+    + /i2 * i1 * /f16 * i7 * /f13 * i11
+    + i2 * i4 * f15
+    + i4 * f15 * f13
+    + i4 * f15 * /i11
+    + i4 * f15 * /i7
+f15.oe = vcc
+/f14 = /i2 * /i3
+f14.oe = /i3
+f13 = gnd
+f13.oe = gnd
+o12 = i3 * /f13
+o12.oe = vcc
